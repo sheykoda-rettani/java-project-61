@@ -2,6 +2,7 @@ plugins {
     id("groovy")
     id("com.github.ben-manes.versions") version "0.53.0"
     id("application")
+    id("checkstyle")
 }
 
 group = "hexlet.code"
