@@ -53,3 +53,5 @@ bin/
 ### app service files
 /app/.gradle/
 /app/.idea/
+
+*.cast

@@ -1,1 +1,3 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sheykoda-rettani_java-project-61&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sheykoda-rettani_java-project-61)[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=sheykoda-rettani_java-project-61)](https://sonarcloud.io/summary/new_code?id=sheykoda-rettani_java-project-61)[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=sheykoda-rettani_java-project-61)
+
+Просмотреть демонстрацию работы приложения можно [здесь](https://asciinema.org/a/CNvN873189uNqnhs)
