@@ -3,7 +3,8 @@ package hexlet.code;
 public enum GamesEnum {
     GREET_USER(1),
     EVEN_GAME(2),
-    CALCULATOR_GAME(3);
+    CALCULATOR_GAME(3),
+    GREATEST_COMMON_DENOMINATOR(4);
 
     /**
      * Числовое значение ("код" игры).

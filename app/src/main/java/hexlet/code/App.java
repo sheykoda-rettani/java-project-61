@@ -2,6 +2,7 @@ package hexlet.code;
 
 import hexlet.code.games.Calculator;
 import hexlet.code.games.Even;
+import hexlet.code.games.GreatestCommonDenominator;
 import hexlet.code.games.GreetUser;
 
 import java.util.Scanner;
@@ -29,6 +30,9 @@ public final class App {
             case CALCULATOR_GAME:
                 engine.runGame(new Calculator());
                 break;
+            case GREATEST_COMMON_DENOMINATOR:
+                engine.runGame(new GreatestCommonDenominator());
+                break;
             default:
                 throw new IllegalArgumentException();
         }
@@ -36,7 +40,7 @@ public final class App {
 
     public static void main(final String[] args) {
         System.out.println("Please enter the game number and press Enter.");
-        System.out.println("1 - Greet\n2 - Even\n3 - Calculator\n0 - Exit");
+        System.out.println("1 - Greet\n2 - Even\n3 - Calculator\n4 - GCD\n0 - Exit");
         System.out.print("Your choice: ");
         try {
             int val = Integer.parseInt(SCANNER.nextLine());
