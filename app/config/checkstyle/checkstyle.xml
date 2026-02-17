@@ -8,6 +8,9 @@
     <module name="NewlineAtEndOfFile"/>
     <module name="UniqueProperties"/>
     <module name="TreeWalker">
+        <module name="JavadocStyle">
+            <property name="checkFirstSentence" value="false"/>
+        </module>
         <module name="AbbreviationAsWordInName"/>
         <module name="AbstractClassName"/>
         <module name="AvoidStarImport"/>
@@ -45,11 +48,17 @@
         <module name="InnerAssignment"/>
         <module name="OuterTypeFilename"/>
         <module name="IllegalThrows"/>
-        <module name="HiddenField"/>
+        <module name="HiddenField">
+            <property name="ignoreConstructorParameter" value="true"/>
+            <property name="ignoreSetter" value="true"/>
+        </module>
         <module name="OverloadMethodsDeclarationOrder"/>
         <module name="MissingSwitchDefault"/>
         <module name="FallThrough"/>
-        <module name="MagicNumber"/>
+        <module name="MagicNumber">
+            <property name="ignoreFieldDeclaration" value="true"/>
+            <property name="ignoreHashCodeMethod" value="true"/>
+        </module>
         <module name="MethodCount"/>
         <module name="MethodLength"/>
         <module name="ParameterNumber"/>
@@ -76,7 +85,6 @@
         <module name="AnonInnerLength"/>
         <module name="StaticVariableName"/>
         <module name="CommentsIndentation"/>
-        <module name="CustomImportOrder"/>
         <module name="PackageDeclaration"/>
         <module name="SuppressWarnings"/>
         <module name="SummaryJavadoc"/>
@@ -86,7 +94,9 @@
         <module name="SingleLineJavadoc"/>
         <module name="JavadocMethod"/>
         <module name="JavadocType"/>
-        <module name="JavadocVariable"/>
+        <module name="JavadocVariable">
+            <property name="tokens" value="VARIABLE_DEF"/>
+        </module>
         <module name="NonEmptyAtclauseDescription"/>
         <module name="InvalidJavadocPosition"/>
         <module name="MissingJavadocPackage"/>

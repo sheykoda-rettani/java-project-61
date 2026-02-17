@@ -2,7 +2,7 @@ package hexlet.code;
 
 public record QuestionAndAnswer(String text, String correctAnswer) {
 
-    public boolean checkAnswer(String userAnswer) {
+    public boolean checkAnswer(final String userAnswer) {
         return userAnswer.equalsIgnoreCase(correctAnswer);
     }
 

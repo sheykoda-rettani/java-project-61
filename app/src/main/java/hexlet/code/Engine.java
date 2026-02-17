@@ -4,13 +4,26 @@ import hexlet.code.games.GreetUser;
 
 import java.util.Scanner;
 
-public class Engine {
+public final class Engine {
+    /**
+     * Количество раундов игры.
+     */
     private static final int ROUNDS_COUNT = 3;
 
     /**
-     * Основной метод запуска игры
+     * Scanner, чтобы не определять его повторно.
      */
-    public static void runGame(Game game, Scanner scanner) {
+    private final Scanner scanner;
+
+    public Engine(final Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    /**
+     * Основной метод запуска игры.
+     * @param game Игра, которая запускается
+     */
+    public void runGame(final Game game) {
         String playerName = GreetUser.playGame(scanner);
         System.out.println(game.getDescription());
         for (int round = 0; round < ROUNDS_COUNT; round++) {
@@ -21,11 +34,12 @@ public class Engine {
 
             if (!questionAndAnswer.checkAnswer(userAnswer)) {
                 System.out.println(
-                        "'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + questionAndAnswer.correctAnswer() + "'.");
-                System.out.println("Let's try again, " + playerName + "!");
+                        "'" + userAnswer + "' is wrong answer ;(. Correct answer was '"
+                                + questionAndAnswer.correctAnswer() + "'.");
+                System.out.printf("Let's try again, %s!\n", playerName);
                 return;
             }
         }
-        System.out.println("Congratulations, " + playerName + "!");
+        System.out.printf("Congratulations, %s!\n", playerName);
     }
 }

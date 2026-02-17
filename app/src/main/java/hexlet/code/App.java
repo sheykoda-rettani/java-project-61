@@ -7,24 +7,27 @@ import hexlet.code.games.GreetUser;
 import java.util.Scanner;
 
 public final class App {
-    static Scanner scanner = new Scanner(System.in);
+    /**
+     * Для работы с пользовательским вводом.
+     */
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     private App() {
 
     }
 
-    public static void chooseAndStartGame(int gameNumber) throws IllegalArgumentException {
-        switch(gameNumber) {
-            case 1:
-                GreetUser.playGame(scanner);
+    private static void chooseAndStartGame(final int gameNumber) throws IllegalArgumentException {
+        GamesEnum selectedGame = GamesEnum.fromValue(gameNumber);
+        Engine engine = new Engine(SCANNER);
+        switch (selectedGame) {
+            case GREET_USER:
+                GreetUser.playGame(SCANNER);
                 break;
-            case 2:
-                Engine.runGame(new Even(), scanner);
+            case EVEN_GAME:
+                engine.runGame(new Even());
                 break;
-            case 3:
-                Engine.runGame(new Calculator(), scanner);
-                break;
-            case 0:
+            case CALCULATOR_GAME:
+                engine.runGame(new Calculator());
                 break;
             default:
                 throw new IllegalArgumentException();
@@ -36,10 +39,9 @@ public final class App {
         System.out.println("1 - Greet\n2 - Even\n3 - Calculator\n0 - Exit");
         System.out.print("Your choice: ");
         try {
-            int val = Integer.parseInt(scanner.nextLine());
+            int val = Integer.parseInt(SCANNER.nextLine());
             chooseAndStartGame(val);
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("Not a valid game number");
         }
     }
