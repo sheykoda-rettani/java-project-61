@@ -5,7 +5,8 @@ public enum GamesEnum {
     EVEN_GAME(2),
     CALCULATOR_GAME(3),
     GREATEST_COMMON_DENOMINATOR(4),
-    PROGRESSION(5);
+    PROGRESSION(5),
+    PRIME(6);
 
     /**
      * Числовое значение ("код" игры).
