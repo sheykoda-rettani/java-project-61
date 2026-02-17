@@ -22,15 +22,19 @@ public final class GreatestCommonDenominator implements Game {
     public QuestionAndAnswer generateQuestionAndAnswer() {
         int num1 = random.nextInt(UPPER_BOUND) + 1;
         int num2 = random.nextInt(UPPER_BOUND) + 1;
-        String expression = String.format("%d %d", num1,  num2);
+        String expression = String.format("%d %d", num1, num2);
         int gcd = gcd(num1, num2);
 
         return new QuestionAndAnswer(expression, String.valueOf(gcd));
     }
 
     /**
-     * Поиск НОД.
+     * Поиск НОД двух чисел.
+     * @param a - первое число
+     * @param b - второе число
+     * @return наименьший общий делитель чисел a и b
      */
+    @SuppressWarnings({"checkstyle:ParameterAssignment", "checkstyle:FinalParameters"})
     private int gcd(int a, int b) {
         while (b != 0) {
             int temp = b;

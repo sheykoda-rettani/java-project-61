@@ -7,13 +7,16 @@
     </module>
     <module name="NewlineAtEndOfFile"/>
     <module name="UniqueProperties"/>
+    <module name="SuppressWarningsFilter"/>
     <module name="TreeWalker">
         <module name="JavadocStyle">
             <property name="checkFirstSentence" value="false"/>
         </module>
         <module name="AbbreviationAsWordInName"/>
         <module name="AbstractClassName"/>
-        <module name="AvoidStarImport"/>
+        <module name="AvoidStarImport">
+            <property name="excludes" value="java.io,java.net,hexlet.code.games"/>
+        </module>
         <module name="UnusedImports"/>
         <module name="NeedBraces"/>
         <module name="LeftCurly"/>
@@ -119,5 +122,6 @@
         <module name="UnnecessarySemicolonInTryWithResources"/>
         <module name="UnusedLocalVariable"/>
         <module name="VariableDeclarationUsageDistance"/>
+        <module name="SuppressWarningsHolder"/>
     </module>
 </module>
