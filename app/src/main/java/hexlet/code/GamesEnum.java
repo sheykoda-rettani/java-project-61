@@ -13,8 +13,8 @@ public enum GamesEnum {
      */
     private final int gameCode;
 
-    GamesEnum(final int _gameCode) {
-        this.gameCode = _gameCode;
+    GamesEnum(final int gameCodeValue) {
+        this.gameCode = gameCodeValue;
     }
 
     public int getGameCode() {
