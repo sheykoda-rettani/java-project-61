@@ -22,7 +22,8 @@ public final class Engine {
     /**
      * Текст ошибки для случайного выбора не той игры.
      */
-    private static final String HAS_NO_ROUNDS_OR_DESCRIPTION = "Game you have chosen doesn't have rounds or description";
+    private static final String HAS_NO_ROUNDS_OR_DESCRIPTION =
+            "Game you have chosen doesn't have rounds or description";
 
     private Engine() {
 
