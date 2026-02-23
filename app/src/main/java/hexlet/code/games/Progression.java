@@ -1,30 +1,35 @@
 package hexlet.code.games;
 
-import hexlet.code.Game;
 import hexlet.code.QuestionAndAnswer;
 
 import java.util.Random;
 
-public final class Progression implements Game {
+import static hexlet.code.games.consts.Consts.LOWER_BOUND;
+
+public final class Progression {
     /**
      * Для генерации случайных чисел.
      */
-    private final Random random = new Random();
+    private static final Random RANDOM = new Random();
 
-    @Override
-    public String getDescription() {
+    private Progression () {
+
+    }
+
+    public static String getDescription() {
         return "What number is missing in the progression?";
     }
 
-    @Override
-    public QuestionAndAnswer generateQuestionAndAnswer() {
+    public static QuestionAndAnswer generateQuestionAndAnswer() {
         final int minLength = 5;
         final int additionalElementsMax = 5;
-        final int firstNumber = random.nextInt(10) + 1;
-        final int progressionStep = random.nextInt(10) + 1;
+        final int numberBound = 10;
+        final int progressionStepBound = 10;
+        final int firstNumber = RANDOM.nextInt(numberBound) + LOWER_BOUND;
+        final int progressionStep = RANDOM.nextInt(progressionStepBound) + LOWER_BOUND;
 
-        int progressionLength = random.nextInt(additionalElementsMax) + minLength;
-        int hiddenIndex = random.nextInt(progressionLength);
+        int progressionLength = RANDOM.nextInt(additionalElementsMax) + minLength;
+        int hiddenIndex = RANDOM.nextInt(progressionLength);
         Integer hiddenElem = null;
 
         StringBuilder sequenceString = new StringBuilder();

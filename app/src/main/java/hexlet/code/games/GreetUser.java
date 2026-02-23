@@ -7,13 +7,15 @@ public final class GreetUser {
 
     }
 
-    public static String playGame(final Scanner scanner) {
+
+    public static String playGame() {
+        final Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games! ");
 
         System.out.print("May I have your name? ");
         String userName = scanner.nextLine();
 
-        System.out.printf("Hello, %s!\n", userName);
+        System.out.printf("Hello, %s!%n", userName);
         return userName;
     }
 }

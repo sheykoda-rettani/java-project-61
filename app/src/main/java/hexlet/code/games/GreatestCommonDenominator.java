@@ -1,27 +1,29 @@
 package hexlet.code.games;
 
-import hexlet.code.Game;
 import hexlet.code.QuestionAndAnswer;
 
 import java.util.Random;
 
 import static hexlet.code.games.consts.Consts.UPPER_BOUND;
 
-public final class GreatestCommonDenominator implements Game {
+public final class GreatestCommonDenominator {
     /**
      * Для генерации случайных чисел.
      */
-    private final Random random = new Random();
+    private static final Random RANDOM = new Random();
 
-    @Override
-    public String getDescription() {
+    private GreatestCommonDenominator () {
+
+    }
+
+    public static String getDescription() {
         return "Find the greatest common divisor of given numbers.";
     }
 
-    @Override
-    public QuestionAndAnswer generateQuestionAndAnswer() {
-        int num1 = random.nextInt(UPPER_BOUND) + 1;
-        int num2 = random.nextInt(UPPER_BOUND) + 1;
+    public static QuestionAndAnswer generateQuestionAndAnswer() {
+        int lowerBoundGCD = 2;
+        int num1 = RANDOM.nextInt(UPPER_BOUND) + lowerBoundGCD;
+        int num2 = RANDOM.nextInt(UPPER_BOUND) + lowerBoundGCD;
         String expression = String.format("%d %d", num1, num2);
         int gcd = gcd(num1, num2);
 
@@ -35,7 +37,7 @@ public final class GreatestCommonDenominator implements Game {
      * @return наименьший общий делитель чисел a и b
      */
     @SuppressWarnings({"checkstyle:ParameterAssignment", "checkstyle:FinalParameters"})
-    private int gcd(int a, int b) {
+    private static int gcd(int a, int b) {
         while (b != 0) {
             int temp = b;
             b = a % b;

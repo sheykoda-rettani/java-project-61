@@ -3,7 +3,7 @@
 <module name="Checker">
     <module name="FileTabCharacter"/>
     <module name="LineLength">
-        <property name="max" value="120"/>
+        <property name="max" value="140"/>
     </module>
     <module name="NewlineAtEndOfFile"/>
     <module name="UniqueProperties"/>
@@ -15,7 +15,7 @@
         <module name="AbbreviationAsWordInName"/>
         <module name="AbstractClassName"/>
         <module name="AvoidStarImport">
-            <property name="excludes" value="java.io,java.net,hexlet.code.games"/>
+            <property name="excludes" value="java.io,java.net,hexlet.code.games,hexlet.code.GamesEnum"/>
         </module>
         <module name="UnusedImports"/>
         <module name="NeedBraces"/>

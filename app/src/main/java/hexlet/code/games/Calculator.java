@@ -1,33 +1,35 @@
 package hexlet.code.games;
 
-import hexlet.code.Game;
 import hexlet.code.QuestionAndAnswer;
 
 import java.util.Random;
 
+import static hexlet.code.games.consts.Consts.LOWER_BOUND;
 import static hexlet.code.games.consts.Consts.UPPER_BOUND;
 
-public final class Calculator implements Game {
+public final class Calculator {
     /**
      * Для генерации случайных чисел.
      */
-    private final Random random = new Random();
+    private static final Random RANDOM = new Random();
 
     /**
      * Допустимые операции.
      */
     private static final String OPERANDS = "+-*";
 
-    @Override
-    public String getDescription() {
+    private Calculator() {
+
+    }
+
+    public static String getDescription() {
         return "What is the result of the expression?";
     }
 
-    @Override
-    public QuestionAndAnswer generateQuestionAndAnswer() {
-        int num1 = random.nextInt(UPPER_BOUND) + 1;
-        int num2 = random.nextInt(UPPER_BOUND) + 1;
-        char operator = OPERANDS.charAt(random.nextInt(OPERANDS.length()));
+    public static QuestionAndAnswer generateQuestionAndAnswer() {
+        int num1 = RANDOM.nextInt(UPPER_BOUND) + LOWER_BOUND;
+        int num2 = RANDOM.nextInt(UPPER_BOUND) + LOWER_BOUND;
+        char operator = OPERANDS.charAt(RANDOM.nextInt(OPERANDS.length()));
 
         String expression = String.format("%d %s %d", num1, operator, num2);
         int result = switch (operator) {
