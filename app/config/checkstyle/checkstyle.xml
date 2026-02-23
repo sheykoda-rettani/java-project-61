@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<!DOCTYPE module PUBLIC "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN" "https://checkstyle.org">
+<!DOCTYPE module PUBLIC
+        "-//Puppycrawl//DTD Check Configuration 1.3//EN"
+        "https://checkstyle.org/dtd/config_1_3.dtd">
 <module name="Checker">
     <module name="FileTabCharacter"/>
     <module name="LineLength">
@@ -14,10 +16,9 @@
         </module>
         <module name="AbbreviationAsWordInName"/>
         <module name="AbstractClassName"/>
-        <module name="AvoidStarImport">
-            <property name="excludes" value="java.io,java.net,hexlet.code.games,hexlet.code.GamesEnum"/>
-        </module>
+        <module name="AvoidStarImport"/>
         <module name="UnusedImports"/>
+        <module name="MethodParamPad"/>
         <module name="NeedBraces"/>
         <module name="LeftCurly"/>
         <module name="RightCurly"/>

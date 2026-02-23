@@ -12,7 +12,7 @@ public final class Progression {
      */
     private static final Random RANDOM = new Random();
 
-    private Progression () {
+    private Progression() {
 
     }
 

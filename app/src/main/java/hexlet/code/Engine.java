@@ -1,10 +1,17 @@
 package hexlet.code;
 
-import hexlet.code.games.*;
+
+import hexlet.code.games.Calculator;
+import hexlet.code.games.Even;
+import hexlet.code.games.GreatestCommonDenominator;
+import hexlet.code.games.GreetUser;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
 
 import java.util.Scanner;
 
-import static hexlet.code.GamesEnum.*;
+import static hexlet.code.GamesEnum.GREET_USER;
+
 
 public final class Engine {
     /**

@@ -12,7 +12,7 @@ public final class GreatestCommonDenominator {
      */
     private static final Random RANDOM = new Random();
 
-    private GreatestCommonDenominator () {
+    private GreatestCommonDenominator() {
 
     }
 
