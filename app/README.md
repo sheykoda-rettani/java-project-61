@@ -1,3 +1,0 @@
-[![Actions Status](https://github.com/sheykoda-rettani/java-project-61/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/sheykoda-rettani/java-project-61/actions)![Github Actions](https://github.com/sheykoda-rettani/java-project-61/actions/workflows/build.yml/badge.svg) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=sheykoda-rettani_java-project-61&metric=bugs)](https://sonarcloud.io/summary/new_code?id=sheykoda-rettani_java-project-61) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=sheykoda-rettani_java-project-61&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=sheykoda-rettani_java-project-61)
-
-Просмотреть демонстрацию работы приложения можно [здесь](https://asciinema.org/a/FcAosV03azEOGHnG)
