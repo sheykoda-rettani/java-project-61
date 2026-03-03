@@ -14,9 +14,9 @@ public final class Progression {
      
     private static final Random RANDOM = new Random();
 
-    private Progression() {}
+    private Progression() { }
 
-    public static void playGame(String playerName, int numberOfRounds) {
+    public static void playGame(final String playerName, final int numberOfRounds) {
         List<QuestionAndAnswer> questionsAndAnswers = generateQuestionsAndAnswers(numberOfRounds);
         Engine.playGame(playerName, getMainQuestion(), questionsAndAnswers);
     }
@@ -72,7 +72,7 @@ public final class Progression {
                 questionBuilder.append(" ");
             }
         }
-        String question = questionBuilder.toString().trim(); // Убираем лишние пробелы в конце
+        String question = questionBuilder.toString().trim();
 
         return new QuestionAndAnswer(question, progression[hiddenIndex]);
     }

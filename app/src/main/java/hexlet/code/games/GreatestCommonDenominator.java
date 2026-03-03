@@ -20,7 +20,7 @@ public final class GreatestCommonDenominator {
 
     }
 
-    public static void playGame(String playerName, int numberOfRounds) {
+    public static void playGame(final String playerName, final int numberOfRounds) {
         List<QuestionAndAnswer> questionsAndAnswers = generateQuestionsAndAnswers(numberOfRounds);
         Engine.playGame(playerName, getMainQuestion(), questionsAndAnswers);
     }
