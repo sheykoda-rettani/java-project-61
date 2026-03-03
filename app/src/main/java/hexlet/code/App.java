@@ -7,7 +7,6 @@ import hexlet.code.games.GreetUser;
 import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
 
-import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -31,7 +30,6 @@ public final class App {
 
     public static void main(final String[] args) {
         final int exitVal = 0;
-        final int numberOfRounds = 3;
         final Set<Integer> validGameNumbers = Set.of(1, 2, 3, 4, 5, 6);
         outputMenu();
         try {
@@ -45,36 +43,23 @@ public final class App {
                 if (GREET_USER == chosenGame) {
                     return;
                 }
-                String mainQuestion = produceMainQuestion(chosenGame);
-                List<QuestionAndAnswer> questionsAndAnswers = produceQuestionsAndAnswers(chosenGame, numberOfRounds);
-                Engine.playGame(playerName, mainQuestion, questionsAndAnswers);
+                runGame(playerName, chosenGame);
             }
         } catch (IllegalArgumentException e) {
             System.out.println("Not a valid game number");
         }
     }
 
-    private static List<QuestionAndAnswer> produceQuestionsAndAnswers(final GamesEnum chosenGame,
-                                                                      final int numberOfRounds) {
-        return switch (chosenGame) {
-            case EVEN -> Even.generateQuestionsAndAnswers(numberOfRounds);
-            case CALCULATOR -> Calculator.generateQuestionsAndAnswers(numberOfRounds);
-            case GREATEST_COMMON_DENOMINATOR -> GreatestCommonDenominator.generateQuestionsAndAnswers(numberOfRounds);
-            case PROGRESSION -> Progression.generateQuestionsAndAnswers(numberOfRounds);
-            case PRIME -> Prime.generateQuestionsAndAnswers(numberOfRounds);
+    private static void runGame(final String playerName, final GamesEnum chosenGame) {
+        final int numberOfRounds = 3;
+        switch (chosenGame) {
+            case EVEN -> Even.playGame(playerName, numberOfRounds);
+            case CALCULATOR -> Calculator.playGame(playerName, numberOfRounds);
+            case GREATEST_COMMON_DENOMINATOR -> GreatestCommonDenominator.playGame(playerName, numberOfRounds);
+            case PROGRESSION -> Progression.playGame(playerName, numberOfRounds);
+            case PRIME -> Prime.playGame(playerName, numberOfRounds);
             default -> throw new IllegalArgumentException(HAS_NO_ROUNDS_OR_DESCRIPTION);
-        };
-    }
-
-    private static String produceMainQuestion(final GamesEnum chosenGame) {
-        return switch (chosenGame) {
-            case EVEN -> Even.getMainQuestion();
-            case CALCULATOR -> Calculator.getMainQuestion();
-            case GREATEST_COMMON_DENOMINATOR -> GreatestCommonDenominator.getMainQuestion();
-            case PROGRESSION -> Progression.getMainQuestion();
-            case PRIME -> Prime.getMainQuestion();
-            default -> throw new IllegalArgumentException(HAS_NO_ROUNDS_OR_DESCRIPTION);
-        };
+        }
     }
 
     private static void outputMenu() {

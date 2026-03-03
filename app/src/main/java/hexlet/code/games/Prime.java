@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
 import hexlet.code.QuestionAndAnswer;
 
 import java.util.List;
@@ -19,7 +20,13 @@ public final class Prime {
 
     }
 
-    public static String getMainQuestion() {
+    public static void playGame(String playerName, int numberOfRounds) {
+        List<QuestionAndAnswer> questionsAndAnswers = generateQuestionsAndAnswers(numberOfRounds);
+        Engine.playGame(playerName, getMainQuestion(), questionsAndAnswers);
+    }
+
+
+    private static String getMainQuestion() {
         return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     }
 
@@ -30,7 +37,7 @@ public final class Prime {
      * @return список с парами вопрос-ответ
      * @throws IllegalArgumentException если передано отрицательное или нулевое значение количества раундов
      */
-    public static List<QuestionAndAnswer> generateQuestionsAndAnswers(final int numberOfRounds) {
+    private static List<QuestionAndAnswer> generateQuestionsAndAnswers(final int numberOfRounds) {
         if (numberOfRounds <= 0) {
             throw new IllegalArgumentException("Количество раундов должно быть больше нуля.");
         }
@@ -40,7 +47,7 @@ public final class Prime {
                 collect(Collectors.toList());
     }
 
-    public static QuestionAndAnswer generateQuestionAndAnswer() {
+    private static QuestionAndAnswer generateQuestionAndAnswer() {
         int lowerBoundPrime = 2;
         final int primeCandidate = RANDOM.nextInt(UPPER_BOUND) + lowerBoundPrime;
 

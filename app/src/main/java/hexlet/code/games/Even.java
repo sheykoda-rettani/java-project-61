@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
 import hexlet.code.QuestionAndAnswer;
 
 import java.util.List;
@@ -20,7 +21,12 @@ public final class Even {
 
     }
 
-    public static String getMainQuestion() {
+    public static void playGame(String playerName, int numberOfRounds) {
+        List<QuestionAndAnswer> questionsAndAnswers = generateQuestionsAndAnswers(numberOfRounds);
+        Engine.playGame(playerName, getMainQuestion(), questionsAndAnswers);
+    }
+
+    private static String getMainQuestion() {
         return "Answer 'yes' if the number is even, otherwise answer 'no'.";
     }
 
@@ -31,7 +37,7 @@ public final class Even {
      * @return список с парами вопрос-ответ
      * @throws IllegalArgumentException если передано отрицательное или нулевое значение количества раундов
      */
-    public static List<QuestionAndAnswer> generateQuestionsAndAnswers(final int numberOfRounds) {
+    private static List<QuestionAndAnswer> generateQuestionsAndAnswers(final int numberOfRounds) {
         if (numberOfRounds <= 0) {
             throw new IllegalArgumentException("Количество раундов должно быть больше нуля.");
         }
@@ -41,7 +47,7 @@ public final class Even {
                 collect(Collectors.toList());
     }
 
-    public static QuestionAndAnswer generateQuestionAndAnswer() {
+    private static QuestionAndAnswer generateQuestionAndAnswer() {
         int num = RANDOM.nextInt(UPPER_BOUND) + LOWER_BOUND;
         String answer = (num % 2 == 0) ? "yes" : "no";
         return new QuestionAndAnswer(String.valueOf(num), answer);

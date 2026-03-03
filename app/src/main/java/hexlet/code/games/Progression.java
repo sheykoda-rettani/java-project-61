@@ -1,25 +1,27 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
 import hexlet.code.QuestionAndAnswer;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
-import static hexlet.code.games.consts.Consts.LOWER_BOUND;
 
 public final class Progression {
     /**
      * Для генерации случайных чисел.
      */
+     
     private static final Random RANDOM = new Random();
 
-    private Progression() {
+    private Progression() {}
 
+    public static void playGame(String playerName, int numberOfRounds) {
+        List<QuestionAndAnswer> questionsAndAnswers = generateQuestionsAndAnswers(numberOfRounds);
+        Engine.playGame(playerName, getMainQuestion(), questionsAndAnswers);
     }
 
-    public static String getMainQuestion() {
+    private static String getMainQuestion() {
         return "What number is missing in the progression?";
     }
 
@@ -30,49 +32,66 @@ public final class Progression {
      * @return список с парами вопрос-ответ
      * @throws IllegalArgumentException если передано отрицательное или нулевое значение количества раундов
      */
-    public static List<QuestionAndAnswer> generateQuestionsAndAnswers(final int numberOfRounds) {
+    private static List<QuestionAndAnswer> generateQuestionsAndAnswers(final int numberOfRounds) {
         if (numberOfRounds <= 0) {
             throw new IllegalArgumentException("Количество раундов должно быть больше нуля.");
         }
 
-        return IntStream.range(0, numberOfRounds).
-                mapToObj(i -> generateQuestionAndAnswer()).
-                collect(Collectors.toList());
+        List<QuestionAndAnswer> result = new ArrayList<>();
+        for (int i = 0; i < numberOfRounds; i++) {
+            result.add(generateQuestionAndAnswer());
+        }
+        return result;
     }
 
-    public static QuestionAndAnswer generateQuestionAndAnswer() {
+    /**
+     * Генерирует одну пару вопрос-ответ.
+     *
+     * @return объект QuestionAndAnswer с вопросом и правильным ответом
+     */
+    private static QuestionAndAnswer generateQuestionAndAnswer() {
+        final int numberBound = 10;
+        final int progressionStepBound = 10;
         final int minLength = 5;
         final int additionalElementsMax = 5;
         int progressionLength = RANDOM.nextInt(additionalElementsMax) + minLength;
         int hiddenIndex = RANDOM.nextInt(progressionLength);
 
-        int[] progression = createProgression(progressionLength);
-        String question = IntStream.range(0, progressionLength).
-                mapToObj(i -> i == hiddenIndex ? ".." : String.valueOf(progression[i])).
-                collect(Collectors.joining(" "));
+        int startValue = RANDOM.nextInt(numberBound) + 1;
+        int step = RANDOM.nextInt(progressionStepBound) + 1;
+        String[] progression = createProgression(startValue, step, progressionLength);
 
-        return new QuestionAndAnswer(question, String.valueOf(progression[hiddenIndex]));
+        StringBuilder questionBuilder = new StringBuilder();
+        for (int i = 0; i < progression.length; i++) {
+            if (i == hiddenIndex) {
+                questionBuilder.append("..");
+            } else {
+                questionBuilder.append(progression[i]);
+            }
+            if (i != progression.length - 1) {
+                questionBuilder.append(" ");
+            }
+        }
+        String question = questionBuilder.toString().trim(); // Убираем лишние пробелы в конце
+
+        return new QuestionAndAnswer(question, progression[hiddenIndex]);
     }
 
     /**
-     * Вспомогательная функция для построения арифметической прогрессии.
+     * Создаёт арифметическую прогрессию как массив строк.
      *
-     * @param progressionLength длинна прогрессии
-     * @return массив с элементами прогрессии
+     * @param startValue первое число прогрессии
+     * @param step шаг прогрессии
+     * @param length длина прогрессии
+     * @return массив строк с элементами прогрессии
      */
-    private static int[] createProgression(final int progressionLength) {
-        final int numberBound = 10;
-        final int progressionStepBound = 10;
-        final int firstNumber = RANDOM.nextInt(numberBound) + LOWER_BOUND;
-        final int progressionStep = RANDOM.nextInt(progressionStepBound) + LOWER_BOUND;
-
-        int currentElem = firstNumber;
-        int[] result = new int[progressionLength];
-        for (int i = 0; i < progressionLength; i++) {
-            result[i] = currentElem;
-            currentElem += progressionStep;
+    private static String[] createProgression(final int startValue, final int step, final int length) {
+        String[] result = new String[length];
+        int currentElement = startValue;
+        for (int i = 0; i < length; i++) {
+            result[i] = Integer.toString(currentElement);
+            currentElement += step;
         }
-
         return result;
     }
 }
