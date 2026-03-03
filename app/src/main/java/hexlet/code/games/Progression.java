@@ -10,7 +10,7 @@ import java.util.Random;
 public final class Progression {
     /**
      * Для генерации случайных чисел.
-     */     
+     */
     private static final Random RANDOM = new Random();
 
     private Progression() { }
