@@ -1,12 +1,8 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.QuestionAndAnswer;
 
-import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static hexlet.code.games.consts.Consts.UPPER_BOUND;
 
@@ -16,13 +12,11 @@ public final class GreatestCommonDenominator {
      */
     private static final Random RANDOM = new Random();
 
-    private GreatestCommonDenominator() {
+    private GreatestCommonDenominator() { }
 
-    }
-
-    public static void playGame(final String playerName, final int numberOfRounds) {
-        List<QuestionAndAnswer> questionsAndAnswers = generateQuestionsAndAnswers(numberOfRounds);
-        Engine.playGame(playerName, getMainQuestion(), questionsAndAnswers);
+    public static void playGame() {
+        String[][] questionsAndAnswers = generateQuestionsAndAnswers();
+        Engine.playGame(getMainQuestion(), questionsAndAnswers);
     }
 
     private static String getMainQuestion() {
@@ -32,28 +26,25 @@ public final class GreatestCommonDenominator {
     /**
      * Генерирует заданное количество пар вопрос-ответ для игры.
      *
-     * @param numberOfRounds количество раундов (должно быть положительным)
      * @return список с парами вопрос-ответ
      * @throws IllegalArgumentException если передано отрицательное или нулевое значение количества раундов
      */
-    private static List<QuestionAndAnswer> generateQuestionsAndAnswers(final int numberOfRounds) {
-        if (numberOfRounds <= 0) {
-            throw new IllegalArgumentException("Количество раундов должно быть больше нуля.");
+    private static String[][] generateQuestionsAndAnswers() {
+        String[][] result = new String[Engine.NUMBER_OF_ROUNDS][];
+        for (int i = 0; i < Engine.NUMBER_OF_ROUNDS; i++) {
+            result[i] = generateQuestionAndAnswer();
         }
-
-        return IntStream.range(0, numberOfRounds).
-                mapToObj(i -> generateQuestionAndAnswer()).
-                collect(Collectors.toList());
+        return result;
     }
 
-    private static QuestionAndAnswer generateQuestionAndAnswer() {
+    private static String[] generateQuestionAndAnswer() {
         int lowerBoundGCD = 2;
         int num1 = RANDOM.nextInt(UPPER_BOUND) + lowerBoundGCD;
         int num2 = RANDOM.nextInt(UPPER_BOUND) + lowerBoundGCD;
         String expression = String.format("%d %d", num1, num2);
         int gcd = gcd(num1, num2);
 
-        return new QuestionAndAnswer(expression, String.valueOf(gcd));
+        return new String[] {expression, String.valueOf(gcd)};
     }
 
     /**

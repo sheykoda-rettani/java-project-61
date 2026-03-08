@@ -8,7 +8,7 @@ public final class GreetUser {
     }
 
 
-    public static String playGame() {
+    public static void playGame() {
         final Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games! ");
 
@@ -16,6 +16,5 @@ public final class GreetUser {
         String userName = scanner.nextLine();
 
         System.out.printf("Hello, %s!%n", userName);
-        return userName;
     }
 }

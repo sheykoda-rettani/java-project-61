@@ -1,12 +1,8 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.QuestionAndAnswer;
 
-import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static hexlet.code.games.consts.Consts.UPPER_BOUND;
 
@@ -20,9 +16,9 @@ public final class Prime {
 
     }
 
-    public static void playGame(final String playerName, final int numberOfRounds) {
-        List<QuestionAndAnswer> questionsAndAnswers = generateQuestionsAndAnswers(numberOfRounds);
-        Engine.playGame(playerName, getMainQuestion(), questionsAndAnswers);
+    public static void playGame() {
+        String[][] questionsAndAnswers = generateQuestionsAndAnswers();
+        Engine.playGame(getMainQuestion(), questionsAndAnswers);
     }
 
 
@@ -33,28 +29,25 @@ public final class Prime {
     /**
      * Генерирует заданное количество пар вопрос-ответ для игры.
      *
-     * @param numberOfRounds количество раундов (должно быть положительным)
      * @return список с парами вопрос-ответ
      * @throws IllegalArgumentException если передано отрицательное или нулевое значение количества раундов
      */
-    private static List<QuestionAndAnswer> generateQuestionsAndAnswers(final int numberOfRounds) {
-        if (numberOfRounds <= 0) {
-            throw new IllegalArgumentException("Количество раундов должно быть больше нуля.");
+    private static String[][] generateQuestionsAndAnswers() {
+        String[][] result = new String[Engine.NUMBER_OF_ROUNDS][];
+        for (int i = 0; i < Engine.NUMBER_OF_ROUNDS; i++) {
+            result[i] = generateQuestionAndAnswer();
         }
-
-        return IntStream.range(0, numberOfRounds).
-                mapToObj(i -> generateQuestionAndAnswer()).
-                collect(Collectors.toList());
+        return result;
     }
 
-    private static QuestionAndAnswer generateQuestionAndAnswer() {
+    private static String[] generateQuestionAndAnswer() {
         int lowerBoundPrime = 2;
         final int primeCandidate = RANDOM.nextInt(UPPER_BOUND) + lowerBoundPrime;
 
         boolean isPrime = isNumberPrime(primeCandidate);
         String correctAnswer = isPrime ? "yes" : "no";
 
-        return new QuestionAndAnswer(String.valueOf(primeCandidate), correctAnswer);
+        return new String[] {String.valueOf(primeCandidate), correctAnswer};
     }
 
     /**

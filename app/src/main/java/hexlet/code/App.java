@@ -10,8 +10,6 @@ import hexlet.code.games.Progression;
 import java.util.Scanner;
 import java.util.Set;
 
-import static hexlet.code.GamesEnum.GREET_USER;
-
 public final class App {
     /**
      * Для работы с пользовательским вводом.
@@ -39,25 +37,21 @@ public final class App {
             }
             if (validGameNumbers.contains(choice)) {
                 final GamesEnum chosenGame = GamesEnum.fromValue(choice);
-                final String playerName = GreetUser.playGame();
-                if (GREET_USER == chosenGame) {
-                    return;
-                }
-                runGame(playerName, chosenGame);
+                runGame(chosenGame);
             }
         } catch (IllegalArgumentException e) {
             System.out.println("Not a valid game number");
         }
     }
 
-    private static void runGame(final String playerName, final GamesEnum chosenGame) {
-        final int numberOfRounds = 3;
+    private static void runGame(final GamesEnum chosenGame) {
         switch (chosenGame) {
-            case EVEN -> Even.playGame(playerName, numberOfRounds);
-            case CALCULATOR -> Calculator.playGame(playerName, numberOfRounds);
-            case GREATEST_COMMON_DENOMINATOR -> GreatestCommonDenominator.playGame(playerName, numberOfRounds);
-            case PROGRESSION -> Progression.playGame(playerName, numberOfRounds);
-            case PRIME -> Prime.playGame(playerName, numberOfRounds);
+            case GREET_USER -> GreetUser.playGame();
+            case EVEN -> Even.playGame();
+            case CALCULATOR -> Calculator.playGame();
+            case GREATEST_COMMON_DENOMINATOR -> GreatestCommonDenominator.playGame();
+            case PROGRESSION -> Progression.playGame();
+            case PRIME -> Prime.playGame();
             default -> throw new IllegalArgumentException(HAS_NO_ROUNDS_OR_DESCRIPTION);
         }
     }
