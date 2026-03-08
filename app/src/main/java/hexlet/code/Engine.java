@@ -30,7 +30,7 @@ public final class Engine {
         System.out.printf("Hello, %s!%n", playerName);
         System.out.println(mainQuestion);
         for (String[] qaPair : questionsAndAnswers) {
-            System.out.println(qaPair[0]);
+            System.out.printf("Question: %s%n", qaPair[0]);
             System.out.print("Your answer: ");
             String userAnswer = SCANNER.nextLine();
 
