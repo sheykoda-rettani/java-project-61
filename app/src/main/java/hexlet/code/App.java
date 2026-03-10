@@ -44,7 +44,8 @@ public final class App {
             case GREATEST_COMMON_DENOMINATOR -> GreatestCommonDenominator.playGame();
             case PROGRESSION -> Progression.playGame();
             case PRIME -> Prime.playGame();
-            default -> throw new IllegalArgumentException("Game %s doesn't have rounds or description".formatted(chosenGame));
+            default -> throw new IllegalArgumentException("Game %s doesn't have rounds or description".
+                     formatted(chosenGame));
         }
     }
 
