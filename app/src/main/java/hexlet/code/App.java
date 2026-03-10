@@ -16,15 +16,7 @@ public final class App {
      */
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    /**
-     * Текст ошибки для случайного выбора не той игры.
-     */
-    private static final String HAS_NO_ROUNDS_OR_DESCRIPTION =
-            "Game you have chosen doesn't have rounds or description";
-
-    private App() {
-
-    }
+    private App() { }
 
     public static void main(final String[] args) {
         final int exitVal = 0;
@@ -52,7 +44,7 @@ public final class App {
             case GREATEST_COMMON_DENOMINATOR -> GreatestCommonDenominator.playGame();
             case PROGRESSION -> Progression.playGame();
             case PRIME -> Prime.playGame();
-            default -> throw new IllegalArgumentException(HAS_NO_ROUNDS_OR_DESCRIPTION);
+            default -> throw new IllegalArgumentException("Game %s doesn't have rounds or description".formatted(chosenGame);
         }
     }
 

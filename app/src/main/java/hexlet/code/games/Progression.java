@@ -43,17 +43,16 @@ public final class Progression {
         final int additionalElementsMax = 5;
         int progressionLength = RANDOM.nextInt(additionalElementsMax) + minLength;
         int hiddenIndex = RANDOM.nextInt(progressionLength);
-        final String delimiter = " ";
 
         int startValue = RANDOM.nextInt(numberBound) + 1;
         int step = RANDOM.nextInt(progressionStepBound) + 1;
         String[] progression = createProgression(startValue, step, progressionLength);
+        String answer = progression[hiddenIndex];
+        progression[hiddenIndex] = "..";
 
-        String question = String.join(delimiter, Arrays.copyOfRange(progression, 0, hiddenIndex))
-                + " .. "
-                + String.join(delimiter, Arrays.copyOfRange(progression, hiddenIndex + 1, progression.length));
+        String question = String.join(" ", progression);
 
-        return new String[] {question.trim(), progression[hiddenIndex]};
+        return new String[] {question.trim(), answer};
     }
 
     /**
